@@ -90,21 +90,21 @@ contract FundMe {
      * @notice This function returns the amount funded by a funder
      * @param _address The address of the funder
      */
-    function getAddressToAmountFunded(address _address) public view returns (uint256) {
+    function getAddressToAmountFunded(address _address) external view returns (uint256) {
         return s_addressToAmountFunded[_address];
     }
 
     /**
      * @notice This function returns the list of funders
      */
-    function getFunders() public view returns (address[] memory) {
+    function getFunders() external view returns (address[] memory) {
         return s_funders;
     }
 
     /**
      * @notice This function returns the price feed
      */
-    function getPriceFeed() public view returns (AggregatorV3Interface) {
+    function getPriceFeed() external view returns (AggregatorV3Interface) {
         return s_priceFeed;
     }
 }
