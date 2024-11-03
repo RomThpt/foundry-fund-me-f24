@@ -29,7 +29,18 @@ contract FundMeTest is Test {
         } else if (block.chainid == 1) {
             assertEq(fundMe.getVersion(), 6);
         } else {
-            assertEq(fundMe.getVersion(), 0);
+            assertEq(fundMe.getVersion(), 4);
         }
+    }
+
+    function testFundFailsWithLessThanMinimum() public {
+        vm.expectRevert();
+        fundMe.fund();
+    }
+
+    function testFundUpdateFundedDataStructure() public {
+        fundMe.fund{value: 1 ether}();
+        assertEq(fundMe.s_addressToAmountFunded(msg.sender), 5e18);
+        assertEq(fundMe.s_funders(0), msg.sender);
     }
 }
