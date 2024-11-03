@@ -16,7 +16,7 @@ contract FundMe {
     AggregatorV3Interface public s_priceFeed;
 
     // Constants
-    address public immutable i_owner;
+    address private immutable i_owner;
     uint256 public constant MINIMUM_USD = 5 * 10 ** 18;
 
     /**
@@ -46,14 +46,6 @@ contract FundMe {
         // require(PriceConverter.getConversionRate(msg.value) >= MINIMUM_USD, "You need to spend more ETH!");
         s_addressToAmountFunded[msg.sender] += msg.value;
         s_funders.push(msg.sender);
-    }
-
-    /**
-     * @notice This function returns the version of the price feed
-     * @return The version of the price feed
-     */
-    function getVersion() public view returns (uint256) {
-        return s_priceFeed.version();
     }
 
     /**
@@ -87,18 +79,27 @@ contract FundMe {
     /* View Function */
 
     /**
+     * @notice This function returns the version of the price feed
+     * @return The version of the price feed
+     */
+    function getVersion() public view returns (uint256) {
+        return s_priceFeed.version();
+    }
+    /**
      * @notice This function returns the amount funded by a funder
      * @param _address The address of the funder
      */
+
     function getAddressToAmountFunded(address _address) external view returns (uint256) {
         return s_addressToAmountFunded[_address];
     }
 
     /**
      * @notice This function returns the list of funders
+     * @param _index The index of the funder
      */
-    function getFunders() external view returns (address[] memory) {
-        return s_funders;
+    function getFunders(uint256 _index) external view returns (address) {
+        return s_funders[_index];
     }
 
     /**
@@ -106,5 +107,12 @@ contract FundMe {
      */
     function getPriceFeed() external view returns (AggregatorV3Interface) {
         return s_priceFeed;
+    }
+    /**
+     * @notice This function returns the owner of the contract
+     */
+
+    function getOwner() external view returns (address) {
+        return i_owner;
     }
 }
