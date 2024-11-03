@@ -2,11 +2,12 @@
 
 A decentralized funding platform built with Solidity, utilizing the Foundry framework for development, testing, and deployment. This project allows users to securely contribute funds to a smart contract, enabling a transparent and decentralized way to support projects.
 
----
+### You can view the deployed contract on Sepolia [here](https://sepolia.etherscan.io/address/0x245e2288e5802e8459562740454801d275312481).
 
 ## 📋 Table of Contents
 
 - [Foundry Fund Me F24](#foundry-fund-me-f24)
+    - [You can view the deployed contract on Sepolia here.](#you-can-view-the-deployed-contract-on-sepolia-here)
   - [📋 Table of Contents](#-table-of-contents)
   - [🔋 Features](#-features)
   - [⚙️ Tech Stack](#️-tech-stack)
